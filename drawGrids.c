@@ -5,7 +5,6 @@
 #include "screenData.h"
 #include "raylib.h"
 
-
 DrawGrid() {
 
     for (int i = 0; i <= COLS; i++) {

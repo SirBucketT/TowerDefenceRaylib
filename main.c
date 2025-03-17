@@ -4,7 +4,6 @@
 #include "screenData.h"
 #include "drawGrids.c"
 
-
 int main(void) {
 
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Raylib tower defence thing");
