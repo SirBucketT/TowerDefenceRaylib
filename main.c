@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "raylib.h"
 #include "screenData.h"
-#include "grid.h"
 
 int main(void) {
 

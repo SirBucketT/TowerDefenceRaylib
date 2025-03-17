@@ -34,7 +34,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a4a0654b-603e-45bb-b3fd-75e31aab1059" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grid.h" beforeDir="false" afterPath="$PROJECT_DIR$/grid.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grid.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screenData.h" beforeDir="false" afterPath="$PROJECT_DIR$/screenData.h" afterDir="false" />
     </list>
@@ -131,7 +131,7 @@
       <option name="presentableId" value="Default" />
       <updated>1741886693427</updated>
       <workItem from="1741886695891" duration="621000" />
-      <workItem from="1742206966139" duration="171000" />
+      <workItem from="1742206966139" duration="306000" />
     </task>
     <servers />
   </component>
