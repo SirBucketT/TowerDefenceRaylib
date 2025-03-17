@@ -7,7 +7,7 @@
 int main(void) {
 
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Raylib tower defence thing");
-    SetTargetFPS(60);
+    SetTargetFPS(120);
 
     while(!WindowShouldClose()) {
         BeginDrawing();
