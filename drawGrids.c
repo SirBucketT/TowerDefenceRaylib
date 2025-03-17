@@ -26,10 +26,10 @@ void DrawWalls() {
 
 void HandleWallPlacement() {
     if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
-        Vector2 mousePos = GetMousePosition();
+        Vector2 getLeMousePosition = GetMousePosition();
 
-        int cellX = mousePos.x / CELL_SIZE;
-        int cellY = mousePos.y / CELL_SIZE;
+        int cellX = getLeMousePosition.x / CELL_SIZE;
+        int cellY = getLeMousePosition.y / CELL_SIZE;
 
         if (cellX >= 0 && cellX < COLS && cellY >= 0 && cellY < ROWS) {
             grid[cellY][cellX] = CELL_WALL;
@@ -37,9 +37,9 @@ void HandleWallPlacement() {
     }
 
     if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON)) {
-        Vector2 mousePos = GetMousePosition();
-        int cellX = mousePos.x / CELL_SIZE;
-        int cellY = mousePos.y / CELL_SIZE;
+        Vector2 getLeMousePosition = GetMousePosition();
+        int cellX = getLeMousePosition.x / CELL_SIZE;
+        int cellY = getLeMousePosition.y / CELL_SIZE;
 
         if (cellX >= 0 && cellX < COLS && cellY >= 0 && cellY < ROWS) {
             grid[cellY][cellX] = CELL_EMPTY;
