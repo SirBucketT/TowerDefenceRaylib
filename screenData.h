@@ -18,6 +18,8 @@ typedef enum {
     CELL_WALL
 } CellType;
 
+CellType grid[ROWS][COLS] = {0};
+
 void GridDraw(void);
 void DrawWalls(void);
 void HandleWallPlacement(void);
