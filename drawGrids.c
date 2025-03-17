@@ -6,6 +6,6 @@
 #include "raylib.h"
 
 
-drawGrid() {
-    
+DrawGrid() {
+
 }

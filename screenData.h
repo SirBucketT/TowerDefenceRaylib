@@ -4,7 +4,6 @@
 
 #ifndef SCREENDATA_H
 #define SCREENDATA_H
-#include "drawGrid.c"
 
 #define CELL_SIZE       20
 
@@ -14,6 +13,6 @@
 #define ROWS            (SCREEN_HEIGHT / CELL_SIZE)
 #define COLS            (SCREEN_WIDTH / CELL_SIZE)
 
-drawGrid();
+DrawGrid();
 
 #endif //SCREENDATA_H
