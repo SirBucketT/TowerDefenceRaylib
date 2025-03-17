@@ -13,6 +13,13 @@
 #define ROWS            20
 #define COLS            20
 
-void GridDraw();
+typedef enum {
+    CELL_EMPTY = 0,
+    CELL_WALL
+} CellType;
+
+void GridDraw(void);
+void DrawWalls(void);
+void HandleWallPlacement(void);
 
 #endif //SCREENDATA_H
