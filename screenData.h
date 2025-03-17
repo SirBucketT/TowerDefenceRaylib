@@ -7,11 +7,11 @@
 
 #define CELL_SIZE       40
 
-#define SCREEN_WIDTH    800
+#define SCREEN_WIDTH    799
 #define SCREEN_HEIGHT   800
 
-#define ROWS            20 //(SCREEN_HEIGHT / CELL_SIZE)
-#define COLS            20  //(SCREEN_WIDTH / CELL_SIZE)
+#define ROWS            20
+#define COLS            20
 
 void GridDraw();
 
