@@ -9,21 +9,21 @@ DrawGrid() {
 
     for (int i = 0; i <= COLS; i++) {
         DrawLine(
-            i * CELL_SIZE,          // startPosX
-            0,                      // startPosY
-            i * CELL_SIZE,          // endPosX
-            SCREEN_HEIGHT,          // endPosY
-            DARKGRAY                // color
+            i * CELL_SIZE,
+            0,
+            i * CELL_SIZE,          
+            SCREEN_HEIGHT,
+            DARKGRAY
         );
     }
 
     for (int i = 0; i <= ROWS; i++) {
         DrawLine(
-            0,                      // startPosX
-            i * CELL_SIZE,          // startPosY
-            SCREEN_WIDTH,           // endPosX
-            i * CELL_SIZE,          // endPosY
-            DARKGRAY                // color
+            0,
+            i * CELL_SIZE,
+            SCREEN_WIDTH,
+            i * CELL_SIZE,
+            DARKGRAY
         );
     }
 }
