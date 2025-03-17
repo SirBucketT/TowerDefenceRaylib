@@ -13,6 +13,8 @@ int main(void) {
         BeginDrawing();
         ClearBackground(BLACK);
         GridDraw();
+        DrawWalls();
+        HandleWallPlacement();
         EndDrawing();
     }
 
