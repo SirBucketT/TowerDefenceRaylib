@@ -11,7 +11,7 @@ DrawGrid() {
         DrawLine(
             i * CELL_SIZE,
             0,
-            i * CELL_SIZE,          
+            i * CELL_SIZE,
             SCREEN_HEIGHT,
             DARKGRAY
         );
