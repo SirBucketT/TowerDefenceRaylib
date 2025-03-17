@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "raylib.h"
 #include "screenData.h"
-#include "drawGrids.c"
+#include "drawGame.c"
 
 int gameState = 0;
 
@@ -14,8 +14,6 @@ int main(void) {
     while(!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(BLACK);
-
-
 
         //=========================================================================================================================
         //     Game starts with player making walls then create turrets.
@@ -41,7 +39,6 @@ int main(void) {
                 SpawnEnemies();
             break;
         }
-
 
         GridDraw();
         DrawWalls();

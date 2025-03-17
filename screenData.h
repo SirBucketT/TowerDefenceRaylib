@@ -19,6 +19,9 @@ typedef enum {
     CELL_TURRET
 } CellType;
 
+extern int playerLives();
+int playerScore = 100;
+
 extern CellType grid[ROWS][COLS];
 extern int cellX;
 extern int cellY;
