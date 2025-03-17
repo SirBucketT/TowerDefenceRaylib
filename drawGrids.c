@@ -47,6 +47,10 @@ void HandleWallPlacement() {
     }
 }
 
-void spawnEnemies() {
+void SpawnEnemies() {
+
+}
+
+void CreateTurret() {
 
 }

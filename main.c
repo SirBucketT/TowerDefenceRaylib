@@ -15,21 +15,27 @@ int main(void) {
         BeginDrawing();
         ClearBackground(BLACK);
 
+        GridDraw();
+        DrawWalls();
+
+        //===========================================================
+        //     Enter or exit edit wall mode
+        //===========================================================
+
         if (IsKeyDown(KEY_SPACE)) {
             if (gameState == 0) {
                 gameState++;
-            } else {
+            } else if (gameState == 1) {
                 gameState--;
             }
         }
 
         switch (gameState) {
             case 0:
-                GridDraw();
-                DrawWalls();
                 HandleWallPlacement();
+                CreateTurret();
             case 1:
-                void spawnEnemies();
+                SpawnEnemies();
         }
 
 
