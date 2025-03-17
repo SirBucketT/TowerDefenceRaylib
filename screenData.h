@@ -15,15 +15,19 @@
 
 typedef enum {
     CELL_EMPTY = 0,
-    CELL_WALL
+    CELL_WALL,
+    CELL_TURRET
 } CellType;
 
-CellType grid[ROWS][COLS] = {0};
+extern CellType grid[ROWS][COLS];
+extern int cellX;
+extern int cellY;
 
 void GridDraw(void);
 void DrawWalls(void);
 void HandleWallPlacement(void);
 void SpawnEnemies();
 void CreateTurret();
+void DrawTurret();
 
 #endif //SCREENDATA_H

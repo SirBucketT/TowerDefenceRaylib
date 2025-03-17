@@ -4,7 +4,7 @@
 #include "screenData.h"
 #include "drawGrids.c"
 
-int gameState;
+int gameState = 0;
 
 int main(void) {
 
@@ -15,29 +15,37 @@ int main(void) {
         BeginDrawing();
         ClearBackground(BLACK);
 
-        GridDraw();
-        DrawWalls();
 
-        //===========================================================
-        //     Enter or exit edit wall mode
-        //===========================================================
 
-        if (IsKeyDown(KEY_SPACE)) {
+        //=========================================================================================================================
+        //     Game starts with player making walls then create turrets.
+        //     Once the turrets and walls are placement is final and the game starts and runs until player gets game over.
+        //=========================================================================================================================
+
+        if (IsKeyPressed(KEY_SPACE)) {
             if (gameState == 0) {
                 gameState++;
             } else if (gameState == 1) {
-                gameState--;
+                gameState++;
             }
         }
 
         switch (gameState) {
             case 0:
                 HandleWallPlacement();
-                CreateTurret();
+            break;
             case 1:
+                CreateTurret();
+            break;
+            case 2:
                 SpawnEnemies();
+            break;
         }
 
+
+        GridDraw();
+        DrawWalls();
+        DrawTurret();
 
         EndDrawing();
     }
