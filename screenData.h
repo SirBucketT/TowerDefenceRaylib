@@ -5,14 +5,14 @@
 #ifndef SCREENDATA_H
 #define SCREENDATA_H
 
-#define CELL_SIZE       20
+#define CELL_SIZE       40
 
-#define SCREEN_WIDTH    1800
-#define SCREEN_HEIGHT   1000
+#define SCREEN_WIDTH    800
+#define SCREEN_HEIGHT   800
 
-#define ROWS            (SCREEN_HEIGHT / CELL_SIZE)
-#define COLS            (SCREEN_WIDTH / CELL_SIZE)
+#define ROWS            20 //(SCREEN_HEIGHT / CELL_SIZE)
+#define COLS            20  //(SCREEN_WIDTH / CELL_SIZE)
 
-DrawGrid();
+void GridDraw();
 
 #endif //SCREENDATA_H
