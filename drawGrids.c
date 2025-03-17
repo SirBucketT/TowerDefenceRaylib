@@ -46,3 +46,7 @@ void HandleWallPlacement() {
         }
     }
 }
+
+void spawnEnemies() {
+
+}

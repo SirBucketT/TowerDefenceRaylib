@@ -23,5 +23,6 @@ CellType grid[ROWS][COLS] = {0};
 void GridDraw(void);
 void DrawWalls(void);
 void HandleWallPlacement(void);
+void spawnEnemies();
 
 #endif //SCREENDATA_H
