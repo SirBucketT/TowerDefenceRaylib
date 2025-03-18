@@ -31,7 +31,7 @@ typedef struct {
     bool active;
     Vector2 path[ROWS*COLS];
     int pathLength;
-    int currentPathIndex; 
+    int currentPathIndex;
 } Enemy;
 
 extern int playerLives();

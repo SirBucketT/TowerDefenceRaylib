@@ -34,6 +34,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a4a0654b-603e-45bb-b3fd-75e31aab1059" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drawGame.c" beforeDir="false" afterPath="$PROJECT_DIR$/drawGame.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screenData.h" beforeDir="false" afterPath="$PROJECT_DIR$/screenData.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,10 +109,10 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.TowerDefenceRaylib" />
-      <item itemvalue="CMake Application.glfw" />
       <item itemvalue="CMake Application.hello_raylib_with_cmake" />
+      <item itemvalue="CMake Application.TowerDefenceRaylib" />
       <item itemvalue="CMake Application.raylib" />
+      <item itemvalue="CMake Application.glfw" />
       <item itemvalue="CMake Application.update_mappings" />
     </list>
   </component>
@@ -126,7 +127,7 @@
       <workItem from="1741886695891" duration="621000" />
       <workItem from="1742206966139" duration="12764000" />
       <workItem from="1742287232647" duration="1000" />
-      <workItem from="1742290963356" duration="98000" />
+      <workItem from="1742290963356" duration="634000" />
     </task>
     <servers />
   </component>
