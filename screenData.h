@@ -43,5 +43,7 @@ void SpawnEnemies();
 void CreateTurret();
 void DrawTurret();
 void initStack(Stack* stack);
+void pushStack(Stack* stack, Node* node);
+Node* popStack(Stack* stack);
 
 #endif //SCREENDATA_H

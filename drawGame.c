@@ -5,6 +5,10 @@ CellType grid[ROWS][COLS] = {0};
 int cellX;
 int cellY;
 
+bool isStackEmpty(Stack* stack) {
+    return stack->top == -1;
+}
+
 void GridDraw() {
     for (int i = 0; i <= COLS; i++) {
         DrawLine(i * CELL_SIZE, 0, i * CELL_SIZE, SCREEN_HEIGHT, WHITE);
@@ -84,6 +88,21 @@ void CreateTurret() {
 
 void initStack(Stack* stack) {
     stack->top = -1;
+}
+
+void pushStack(Stack* stack, Node* node) {
+    stack->top++;
+    stack->nodes[stack->top] = node;
+}
+
+Node* popStack(Stack* stack) {
+    if (isStackEmpty(stack)) {
+        return NULL;
+    }
+
+    Node* node = stack->nodes[stack->top];
+    stack->top--;
+    return node;
 }
 
 void SpawnEnemies() {
