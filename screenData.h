@@ -1,7 +1,3 @@
-//
-// Created by theodor on 2025-03-13.
-//
-
 #ifndef SCREENDATA_H
 #define SCREENDATA_H
 

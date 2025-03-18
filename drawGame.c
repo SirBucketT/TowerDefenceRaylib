@@ -1,6 +1,3 @@
-//
-// Created by theodor on 2025-03-17.
-//
 #include "screenData.h"
 #include "raylib.h"
 
