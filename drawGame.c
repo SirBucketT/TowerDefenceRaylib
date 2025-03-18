@@ -86,6 +86,10 @@ void CreateTurret() {
     }
 }
 
+void initStack(Stack* stack) {
+    stack->top = -1;
+}
+
 void SpawnEnemies() {
 
 }

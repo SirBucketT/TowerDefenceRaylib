@@ -46,5 +46,6 @@ void HandleWallPlacement(void);
 void SpawnEnemies();
 void CreateTurret();
 void DrawTurret();
+void initStack(Stack* stack);
 
 #endif //SCREENDATA_H
