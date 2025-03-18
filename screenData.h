@@ -21,19 +21,6 @@ typedef enum {
     CELL_TURRET
 } CellType;
 
-typedef struct {
-    float x;
-    float y;
-    int gridX;
-    int gridY;
-    float speed;
-    int health;
-    bool active;
-    Vector2 path[ROWS*COLS];
-    int pathLength;
-    int currentPathIndex;
-} Enemy;
-
 extern int playerLives();
 int playerScore = 100;
 
@@ -47,9 +34,5 @@ void HandleWallPlacement(void);
 void SpawnEnemies();
 void CreateTurret();
 void DrawTurret();
-void InitEnemies(void);
-void UpdateEnemies(void);
-void DrawEnemies(void);
-void FindPath(Enemy* enemy, int startX, int startY, int goalX, int goalY);
 
 #endif //SCREENDATA_H

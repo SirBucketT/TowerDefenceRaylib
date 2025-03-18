@@ -4,21 +4,6 @@
 #include "screenData.h"
 #include "raylib.h"
 
-typedef struct {
-    int x, y;
-} Point;
-
-typedef struct {
-
-} Pointers;
-
-typedef struct {
-    Point items[ROWS * COLS];
-    int front;
-    int rear;
-    int size;
-} Queue;
-
 CellType grid[ROWS][COLS] = {0};
 int cellX;
 int cellY;
