@@ -21,6 +21,18 @@ typedef enum {
     CELL_TURRET
 } CellType;
 
+typedef struct {
+    int x, y;
+    bool visited;
+    bool obstacle;
+    struct Node* parent;
+} Node;
+
+typedef struct {
+    Node* nodes [ROWS][COLS];
+    int top;
+}Stack;
+
 extern int playerLives();
 int playerScore = 100;
 
