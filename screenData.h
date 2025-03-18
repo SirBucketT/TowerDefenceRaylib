@@ -20,7 +20,6 @@ typedef enum {
     CELL_TURRET
 } CellType;
 
-// Forward declaration to resolve circular dependency
 struct Node;
 
 typedef struct {
@@ -44,11 +43,11 @@ typedef struct Node {
 } Node;
 
 typedef struct {
-    Node* nodes[ROWS * COLS];  // Array to store nodes
-    int top;                   // Index of the top element
+    Node* nodes[ROWS * COLS];
+    int top;
 } Stack;
 
-extern int playerLives;  // Don't make this a function, make it a variable
+extern int playerLives;
 extern int playerScore;
 
 extern CellType grid[ROWS][COLS];

@@ -83,6 +83,11 @@
   }
 }</component>
   <component name="RunManager" selected="CMake Application.hello_raylib_with_cmake">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TowerDefenceRaylib" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TowerDefenceRaylib" TARGET_NAME="TowerDefenceRaylib" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TowerDefenceRaylib" RUN_TARGET_NAME="TowerDefenceRaylib">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -127,7 +132,7 @@
       <workItem from="1741886695891" duration="621000" />
       <workItem from="1742206966139" duration="12764000" />
       <workItem from="1742287232647" duration="1000" />
-      <workItem from="1742290963356" duration="4843000" />
+      <workItem from="1742290963356" duration="6320000" />
     </task>
     <servers />
   </component>
