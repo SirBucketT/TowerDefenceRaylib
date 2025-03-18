@@ -17,7 +17,7 @@ int main(void) {
 
         //=========================================================================================================================
         //     Game starts with player making walls then create turrets.
-        //     Once the turrets and walls are placement is final and the game starts and runs until player gets game over.
+        //     Once the turrets and walls placement is final and the game starts and runs until player gets game over.
         //=========================================================================================================================
 
         if (IsKeyPressed(KEY_SPACE)) {
