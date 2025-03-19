@@ -128,61 +128,56 @@ void initPathfindingGrid() {
     }
 }
 
-bool findPathDFS(int startX, int startY, int goalX, int goalY, Vector2 path[], int* pathLength) {
+bool findPathBFS(int startX, int startY, int goalX, int goalY, Vector2 path[], int* pathLength) {
     initPathfindingGrid();
 
-    Stack stack;
-    initStack(&stack);
+    Queue queue;
+    initQueue(&queue);
 
-    pushStack(&stack, &pathNodes[startY][startX]);
-
-    pathNodes[startY][startX].visited = true;
+    Node* startNode = &pathNodes[startY][startX];
+    startNode->visited = true;
+    enqueue(&queue, startNode);
 
     bool foundPath = false;
 
-    while (!isStackEmpty(&stack) && !foundPath) {
-        Node* currentNode = popStack(&stack);
+    while (!isQueueEmpty(&queue)) {
+        Node* current = dequeue(&queue);
 
-        if (currentNode->x == goalX && currentNode->y == goalY) {
+        if (current->x == goalX && current->y == goalY) {
             foundPath = true;
             break;
         }
 
         for (int i = 0; i < 4; i++) {
-            int newX = currentNode->x + dx[i];
-            int newY = currentNode->y + dy[i];
+            int newX = current->x + dx[i];
+            int newY = current->y + dy[i];
 
             if (newX >= 0 && newX < COLS && newY >= 0 && newY < ROWS) {
-                if (!pathNodes[newY][newX].obstacle && !pathNodes[newY][newX].visited) {
-                    pathNodes[newY][newX].visited = true;
-
-                    pathNodes[newY][newX].parent = currentNode;
-
-                    pushStack(&stack, &pathNodes[newY][newX]);
+                Node* neighbor = &pathNodes[newY][newX];
+                if (!neighbor->visited && !neighbor->obstacle) {
+                    neighbor->visited = true;
+                    neighbor->parent = current;
+                    enqueue(&queue, neighbor);
                 }
             }
         }
     }
 
     if (foundPath) {
-        Node* pathNode = &pathNodes[goalY][goalX];
-        int pathIndex = 0;
-
+        Node* current = &pathNodes[goalY][goalX];
+        int idx = 0;
         Vector2 tempPath[ROWS * COLS];
 
-        while (pathNode != NULL) {
-            tempPath[pathIndex].x = pathNode->x * CELL_SIZE + CELL_SIZE / 2;
-            tempPath[pathIndex].y = pathNode->y * CELL_SIZE + CELL_SIZE / 2;
-            pathIndex++;
-
-            pathNode = pathNode->parent;
+        while (current != NULL) {
+            tempPath[idx++] = (Vector2){ current->x * CELL_SIZE + CELL_SIZE / 2, current->y * CELL_SIZE + CELL_SIZE / 2 };
+            current = current->parent;
         }
 
-        for (int i = 0; i < pathIndex; i++) {
-            path[i] = tempPath[pathIndex - 1 - i];
+        for (int i = 0; i < idx; i++) {
+            path[i] = tempPath[idx - 1 - i];
         }
 
-        *pathLength = pathIndex;
+        *pathLength = idx;
         return true;
     }
 
@@ -204,7 +199,7 @@ void InitEnemies(void) {
 }
 
 void FindPath(Enemy* enemy, int startX, int startY, int goalX, int goalY) {
-    findPathDFS(startX, startY, goalX, goalY, enemy->path, &enemy->pathLength);
+    findPathBFS(startX, startY, goalX, goalY, enemy->path, &enemy->pathLength);
 }
 
 void SpawnEnemy(void) {
@@ -311,4 +306,21 @@ void SpawnEnemies(void) {
 
     UpdateEnemies();
     DrawEnemies();
+}
+
+void initQueue(Queue* q) {
+    q->front = 0;
+    q->rear = 0;
+}
+
+bool isQueueEmpty(Queue* q) {
+    return q->front == q->rear;
+}
+
+void enqueue(Queue* q, Node* node) {
+    q->nodes[q->rear++] = node;
+}
+
+Node* dequeue(Queue* q) {
+    return q->nodes[q->front++];
 }

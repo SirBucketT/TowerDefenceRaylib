@@ -47,6 +47,11 @@ typedef struct {
     int top;
 } Stack;
 
+typedef struct {
+    Node* nodes[ROWS * COLS];
+    int front, rear;
+} Queue;
+
 extern int playerLives;
 extern int playerScore;
 
@@ -70,11 +75,15 @@ void initStack(Stack* stack);
 void pushStack(Stack* stack, Node* node);
 Node* popStack(Stack* stack);
 void initPathfindingGrid(void);
-bool findPathDFS(int startX, int startY, int goalX, int goalY, Vector2 path[], int* pathLength);
 void InitEnemies(void);
 void SpawnEnemy(void);
 void UpdateEnemies(void);
 void DrawEnemies(void);
+void initQueue(Queue* q);
+bool isQueueEmpty(Queue* q);
+void enqueue(Queue* q, Node* node);
+Node* dequeue(Queue* q);
+bool findPathBFS(int startX, int startY, int goalX, int goalY, Vector2 path[], int* pathLength);
 void FindPath(Enemy* enemy, int startX, int startY, int goalX, int goalY);
 
 #endif //SCREENDATA_H
