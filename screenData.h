@@ -64,6 +64,8 @@ extern int activeEnemies;
 extern float spawnTimer;
 extern float spawnInterval;
 
+void DrawPreviewPath(void);
+
 void GridDraw(void);
 void DrawWalls(void);
 void HandleWallPlacement(void);

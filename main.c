@@ -40,9 +40,14 @@ int main(void) {
             break;
         }
 
+        if (gameState == 0 || gameState == 1) {
+            findPathBFS(0, 0, COLS - 1, ROWS - 1, previewPath, &previewPathLength);
+        }
+
         GridDraw();
         DrawWalls();
         DrawTurret();
+        DrawPreviewPath();
 
         EndDrawing();
     }

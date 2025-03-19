@@ -15,6 +15,9 @@ int playerScore = 0;
 int dx[] = {0, 1, 0, -1};
 int dy[] = {-1, 0, 1, 0};
 
+Vector2 previewPath[ROWS * COLS];
+int previewPathLength = 0;
+
 bool isStackEmpty(Stack* stack) {
     return stack->top == -1;
 }
@@ -323,4 +326,12 @@ void enqueue(Queue* q, Node* node) {
 
 Node* dequeue(Queue* q) {
     return q->nodes[q->front++];
+}
+
+void DrawPreviewPath(void) {
+    for (int i = 0; i < previewPathLength - 1; i++) {
+        Vector2 start = previewPath[i];
+        Vector2 end = previewPath[i + 1];
+        DrawLineEx(start, end, 4.0f, YELLOW);
+    }
 }
