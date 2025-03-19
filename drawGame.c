@@ -12,8 +12,8 @@ float spawnTimer = 0.0f;
 float spawnInterval = 0.3f;
 int playerLives = 3;
 int playerScore = 0;
-int dx[] = {1, 0, -1, 0};
-int dy[] = {0, 1, 0, -1};
+int dx[] = {1, 1, 0, -1, -1, -1, 0, 1};
+int dy[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 Vector2 previewPath[ROWS * COLS];
 int previewPathLength = 0;
@@ -151,12 +151,37 @@ bool findPathBFS(int startX, int startY, int goalX, int goalY, Vector2 path[], i
             break;
         }
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 8; i++) {
             int newX = current->x + dx[i];
             int newY = current->y + dy[i];
 
             if (newX >= 0 && newX < COLS && newY >= 0 && newY < ROWS) {
                 Node* neighbor = &pathNodes[newY][newX];
+
+
+                if (i == 1 || i == 3 || i == 5 || i == 7) {
+
+                    bool blockingWall = false;
+
+                    if (i == 1) {
+                        blockingWall = pathNodes[current->y][current->x + 1].obstacle ||
+                                      pathNodes[current->y + 1][current->x].obstacle;
+                    } else if (i == 3) {
+                        blockingWall = pathNodes[current->y][current->x - 1].obstacle ||
+                                      pathNodes[current->y + 1][current->x].obstacle;
+                    } else if (i == 5) {
+                        blockingWall = pathNodes[current->y][current->x - 1].obstacle ||
+                                      pathNodes[current->y - 1][current->x].obstacle;
+                    } else if (i == 7) {
+                        blockingWall = pathNodes[current->y][current->x + 1].obstacle ||
+                                      pathNodes[current->y - 1][current->x].obstacle;
+                    }
+
+                    if (blockingWall) {
+                        continue;
+                    }
+                }
+
                 if (!neighbor->visited && !neighbor->obstacle) {
                     neighbor->visited = true;
                     neighbor->parent = current;
@@ -186,49 +211,6 @@ bool findPathBFS(int startX, int startY, int goalX, int goalY, Vector2 path[], i
 
     *pathLength = 0;
     return false;
-}
-
-void InitEnemies(void) {
-    for (int i = 0; i < MAX_ENEMIES; i++) {
-        enemies[i].active = false;
-        enemies[i].health = 100;
-        enemies[i].speed = 100.0f;
-        enemies[i].pathLength = 0;
-        enemies[i].currentPathIndex = 0;
-    }
-
-    activeEnemies = 0;
-    spawnTimer = 0.0f;
-}
-
-void FindPath(Enemy* enemy, int startX, int startY, int goalX, int goalY) {
-    findPathBFS(startX, startY, goalX, goalY, enemy->path, &enemy->pathLength);
-}
-
-void SpawnEnemy(void) {
-    if (activeEnemies >= MAX_ENEMIES) return;
-
-    for (int i = 0; i < MAX_ENEMIES; i++) {
-        if (!enemies[i].active) {
-            enemies[i].active = true;
-
-            enemies[i].gridX = 0;
-            enemies[i].gridY = 0;
-            enemies[i].x = CELL_SIZE / 2;
-            enemies[i].y = CELL_SIZE / 2;
-
-            FindPath(&enemies[i], 0, 0, COLS-1, ROWS-1);
-
-            if (enemies[i].pathLength == 0) {
-                enemies[i].active = false;
-                return;
-            }
-
-            enemies[i].currentPathIndex = 0;
-            activeEnemies++;
-            break;
-        }
-    }
 }
 
 void UpdateEnemies(void) {
@@ -277,6 +259,49 @@ void UpdateEnemies(void) {
                     CloseWindow();
                 }
             }
+        }
+    }
+}
+
+void InitEnemies(void) {
+    for (int i = 0; i < MAX_ENEMIES; i++) {
+        enemies[i].active = false;
+        enemies[i].health = 100;
+        enemies[i].speed = 100.0f;
+        enemies[i].pathLength = 0;
+        enemies[i].currentPathIndex = 0;
+    }
+
+    activeEnemies = 0;
+    spawnTimer = 0.0f;
+}
+
+void FindPath(Enemy* enemy, int startX, int startY, int goalX, int goalY) {
+    findPathBFS(startX, startY, goalX, goalY, enemy->path, &enemy->pathLength);
+}
+
+void SpawnEnemy(void) {
+    if (activeEnemies >= MAX_ENEMIES) return;
+
+    for (int i = 0; i < MAX_ENEMIES; i++) {
+        if (!enemies[i].active) {
+            enemies[i].active = true;
+
+            enemies[i].gridX = 0;
+            enemies[i].gridY = 0;
+            enemies[i].x = CELL_SIZE / 2;
+            enemies[i].y = CELL_SIZE / 2;
+
+            FindPath(&enemies[i], 0, 0, COLS-1, ROWS-1);
+
+            if (enemies[i].pathLength == 0) {
+                enemies[i].active = false;
+                return;
+            }
+
+            enemies[i].currentPathIndex = 0;
+            activeEnemies++;
+            break;
         }
     }
 }
