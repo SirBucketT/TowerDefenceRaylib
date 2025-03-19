@@ -12,8 +12,8 @@ float spawnTimer = 0.0f;
 float spawnInterval = 0.3f;
 int playerLives = 3;
 int playerScore = 0;
-int dx[] = {0, 1, 0, -1};
-int dy[] = {-1, 0, 1, 0};
+int dx[] = {1, 0, -1, 0};
+int dy[] = {0, 1, 0, -1};
 
 Vector2 previewPath[ROWS * COLS];
 int previewPathLength = 0;
