@@ -15,10 +15,34 @@ TerrainProperties terrainProps[6] = {
 void GenerateRandomTerrain(void) {
     srand(time(NULL));
 
+    bool hasTurret[ROWS][COLS] = {false};
+    bool hasWall[ROWS][COLS] = {false};
+
+    for (int y = 0; y < ROWS; y++) {
+        for (int x = 0; x < COLS; x++) {
+            if (grid[y][x] == CELL_TURRET) {
+                hasTurret[y][x] = true;
+            } else if (grid[y][x] == CELL_WALL) {
+                hasWall[y][x] = true;
+            }
+        }
+    }
+
+
     for (int y = 0; y < ROWS; y++) {
         for (int x = 0; x < COLS; x++) {
             if ((x < 2 && y < 2) || (x > COLS-3 && y > ROWS-3)) {
                 grid[y][x] = CELL_EMPTY;
+                continue;
+            }
+
+            if (hasTurret[y][x]) {
+                grid[y][x] = CELL_TURRET;
+                continue;
+            }
+
+            if (hasWall[y][x]) {
+                grid[y][x] = CELL_WALL;
                 continue;
             }
 
