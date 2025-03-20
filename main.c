@@ -11,9 +11,7 @@ int main(void) {
     // Initialize the window
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Raylib tower defence thing");
     SetTargetFPS(120);
-
     GenerateRandomTerrain();
-    DrawTerrain();
 
     while(!WindowShouldClose()) {
         BeginDrawing();
@@ -43,17 +41,17 @@ int main(void) {
         }
 
 
-
+        DrawTerrain();
         switch (gameState) {
             case 0:
+                DrawPreviewPath();
                 HandleWallPlacement();
-
             DrawText("WALL PLACEMENT PHASE", SCREEN_WIDTH/2 - 150, 10, 20, WHITE);
             DrawText("Left click: Add wall | Right click: Remove wall", 10, SCREEN_HEIGHT - 30, 15, WHITE);
             DrawText("Press SPACE to continue | Press R to regenerate terrain", 10, SCREEN_HEIGHT - 50, 15, WHITE);
-
             break;
             case 1:
+                DrawPreviewPath();
                 CreateTurret();
             DrawText("TURRET PLACEMENT PHASE", SCREEN_WIDTH/2 - 150, 10, 20, WHITE);
             DrawText("Left click: Add turret | Right click: Remove turret", 10, SCREEN_HEIGHT - 30, 15, WHITE);
@@ -66,10 +64,10 @@ int main(void) {
             break;
         }
 
-        GridDraw();
+
+        //GridDraw();
         DrawWalls();
         DrawTurrets();
-        DrawPreviewPath();
 
         if (gameState == 2) {
             DrawProjectiles();

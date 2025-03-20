@@ -341,14 +341,11 @@ void SpawnEnemy(void) {
 void DrawEnemies(void) {
     for (int i = 0; i < MAX_ENEMIES; i++) {
         if (enemies[i].active) {
-            // Normal enemy color
             Color enemyColor = BLUE;
 
-            // Change color if wet
             if (enemies[i].isWet) {
                 enemyColor = DARKBLUE;
 
-                // Draw wet effect (droplets)
                 for (int d = 0; d < 3; d++) {
                     float offsetX = (rand() % 20) - 10;
                     float offsetY = (rand() % 20) - 10;
@@ -358,7 +355,6 @@ void DrawEnemies(void) {
 
             DrawCircle(enemies[i].x, enemies[i].y, CELL_SIZE/3, enemyColor);
 
-            // Health bar
             float healthBarWidth = CELL_SIZE * 0.8f;
             float healthBarHeight = 5.0f;
             float healthPercentage = (float)enemies[i].health / 100.0f;
