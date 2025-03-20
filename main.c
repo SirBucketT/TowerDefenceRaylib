@@ -37,33 +37,33 @@ int main(void) {
             GenerateRandomTerrain();
         }
 
-        switch (gameState) {
-            case 0:
-                HandleWallPlacement();
-
-                DrawText("WALL PLACEMENT PHASE", SCREEN_WIDTH/2 - 150, 10, 20, WHITE);
-                DrawText("Left click: Add wall | Right click: Remove wall", 10, SCREEN_HEIGHT - 30, 15, WHITE);
-                DrawText("Press SPACE to continue | Press R to regenerate terrain", 10, SCREEN_HEIGHT - 50, 15, WHITE);
-
-            break;
-            case 1:
-                CreateTurret();
-                DrawText("TURRET PLACEMENT PHASE", SCREEN_WIDTH/2 - 150, 10, 20, WHITE);
-                DrawText("Left click: Add turret | Right click: Remove turret", 10, SCREEN_HEIGHT - 30, 15, WHITE);
-                DrawText("Press SPACE to start game | Press R to regenerate terrain", 10, SCREEN_HEIGHT - 50, 15, WHITE);
-            break;
-            case 2:
-                SpawnEnemies();
-                UpdateTurrets();
-                UpdateProjectiles();
-            break;
-        }
-
         if (gameState == 0 || gameState == 1) {
             findPathBFS(0, 0, COLS - 1, ROWS - 1, previewPath, &previewPathLength);
         }
 
         DrawTerrain();
+
+        switch (gameState) {
+            case 0:
+                HandleWallPlacement();
+
+            DrawText("WALL PLACEMENT PHASE", SCREEN_WIDTH/2 - 150, 10, 20, WHITE);
+            DrawText("Left click: Add wall | Right click: Remove wall", 10, SCREEN_HEIGHT - 30, 15, WHITE);
+            DrawText("Press SPACE to continue | Press R to regenerate terrain", 10, SCREEN_HEIGHT - 50, 15, WHITE);
+
+            break;
+            case 1:
+                CreateTurret();
+            DrawText("TURRET PLACEMENT PHASE", SCREEN_WIDTH/2 - 150, 10, 20, WHITE);
+            DrawText("Left click: Add turret | Right click: Remove turret", 10, SCREEN_HEIGHT - 30, 15, WHITE);
+            DrawText("Press SPACE to start game | Press R to regenerate terrain", 10, SCREEN_HEIGHT - 50, 15, WHITE);
+            break;
+            case 2:
+                SpawnEnemies();
+            UpdateTurrets();
+            UpdateProjectiles();
+            break;
+        }
 
         GridDraw();
         DrawWalls();
