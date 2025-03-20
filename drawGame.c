@@ -281,6 +281,7 @@ void InitEnemies(void) {
     spawnTimer = 0.0f;
 }
 
+
 void FindPath(Enemy* enemy, int startX, int startY, int goalX, int goalY) {
     findPathBFS(startX, startY, goalX, goalY, enemy->path, &enemy->pathLength);
 }

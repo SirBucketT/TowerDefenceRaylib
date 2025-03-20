@@ -9,7 +9,7 @@ TerrainProperties terrainProps[6] = {
     {1.0f, RED, false, 0.0f},
     {0.5f, SKYBLUE, true, 3.0f},
     {0.8f, BROWN, false, 0.0f},
-    {1.0f, GREEN, false, 0.0f}         
+    {1.0f, GREEN, false, 0.0f}
 };
 
 void GenerateRandomTerrain(void) {
