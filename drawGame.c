@@ -265,6 +265,7 @@ void UpdateEnemies(void) {
     }
 }
 
+
 void InitEnemies(void) {
     for (int i = 0; i < MAX_ENEMIES; i++) {
         enemies[i].active = false;
