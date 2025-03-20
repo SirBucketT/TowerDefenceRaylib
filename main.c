@@ -3,6 +3,7 @@
 #include "raylib.h"
 #include "screenData.h"
 #include "drawGame.c"
+#include "turretManager.c"
 
 int gameState = 0;
 
@@ -37,6 +38,8 @@ int main(void) {
             break;
             case 2:
                 SpawnEnemies();
+                UpdateTurrets();
+                UpdateProjectiles();
             break;
         }
 
@@ -48,6 +51,10 @@ int main(void) {
         DrawWalls();
         DrawTurret();
         DrawPreviewPath();
+
+        if (gameState == 2) {
+            DrawProjectiles();        // Draw projectiles in game state 2
+        }
 
         EndDrawing();
     }
