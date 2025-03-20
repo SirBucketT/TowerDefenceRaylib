@@ -77,13 +77,18 @@ typedef struct Node {
     bool obstacle;
     struct Node* parent;
     float cost;
-    float totalCost;     
+    float totalCost;
 } Node;
 
 typedef struct {
     Node* nodes[ROWS * COLS];
     int top;
 } Stack;
+
+typedef struct {
+    Node* nodes[ROWS * COLS];
+    int size;
+} PriorityQueue;
 
 typedef struct {
     Node* nodes[ROWS * COLS];

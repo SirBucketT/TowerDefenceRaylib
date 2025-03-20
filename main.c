@@ -3,21 +3,26 @@
 #include "raylib.h"
 #include "screenData.h"
 #include "drawGame.c"
+#include "terrainManager.c"  // Include our new terrain manager
 
 int gameState = 0;
 
 int main(void) {
-
+    // Initialize the window
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Raylib tower defence thing");
     SetTargetFPS(120);
+
+    GenerateRandomTerrain();
 
     while(!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(BLACK);
 
         //=========================================================================================================================
-        //     Game starts with player making walls then create turrets.
-        //     Once the turrets and walls placement is final and the game starts and runs until player gets game over.
+        //     Game states:
+        //     0: Wall placement phase
+        //     1: Turret placement phase
+        //     2: Game running phase
         //=========================================================================================================================
 
         if (IsKeyPressed(KEY_SPACE)) {
@@ -28,12 +33,24 @@ int main(void) {
             }
         }
 
+        if ((gameState == 0 || gameState == 1) && IsKeyPressed(KEY_R)) {
+            GenerateRandomTerrain();
+        }
+
         switch (gameState) {
             case 0:
                 HandleWallPlacement();
+
+                DrawText("WALL PLACEMENT PHASE", SCREEN_WIDTH/2 - 150, 10, 20, WHITE);
+                DrawText("Left click: Add wall | Right click: Remove wall", 10, SCREEN_HEIGHT - 30, 15, WHITE);
+                DrawText("Press SPACE to continue | Press R to regenerate terrain", 10, SCREEN_HEIGHT - 50, 15, WHITE);
+
             break;
             case 1:
                 CreateTurret();
+                DrawText("TURRET PLACEMENT PHASE", SCREEN_WIDTH/2 - 150, 10, 20, WHITE);
+                DrawText("Left click: Add turret | Right click: Remove turret", 10, SCREEN_HEIGHT - 30, 15, WHITE);
+                DrawText("Press SPACE to start game | Press R to regenerate terrain", 10, SCREEN_HEIGHT - 50, 15, WHITE);
             break;
             case 2:
                 SpawnEnemies();
@@ -46,13 +63,15 @@ int main(void) {
             findPathBFS(0, 0, COLS - 1, ROWS - 1, previewPath, &previewPathLength);
         }
 
+        DrawTerrain();
+
         GridDraw();
         DrawWalls();
         DrawTurrets();
         DrawPreviewPath();
 
         if (gameState == 2) {
-            DrawProjectiles();        // Draw projectiles in game state 2
+            DrawProjectiles();
         }
 
         EndDrawing();
