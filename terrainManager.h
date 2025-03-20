@@ -10,4 +10,4 @@ void DrawTerrain(void);
 
 void ApplyTerrainEffects(Enemy* enemy, float deltaTime);
 
-#endif 
+#endif

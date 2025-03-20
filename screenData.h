@@ -39,11 +39,13 @@ typedef struct {
     int targetEnemyIndex; // Enemy that this projectile is targeting
 } Projectile;
 
-
 typedef enum {
     CELL_EMPTY = 0,
     CELL_WALL,
-    CELL_TURRET
+    CELL_TURRET,
+    CELL_WATER,
+    CELL_DIRT,
+    CELL_GRASS
 } CellType;
 
 struct Node;
