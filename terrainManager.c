@@ -59,11 +59,15 @@ void DrawTerrain(void) {
         for (int x = 0; x < COLS; x++) {
             CellType type = grid[y][x];
 
-            if (type != CELL_WALL && type != CELL_TURRET && type != CELL_EMPTY) {
-                DrawRectangle(x * CELL_SIZE + 1, y * CELL_SIZE + 1,
-                             CELL_SIZE - 2, CELL_SIZE - 2,
-                             terrainProps[type].color);
+            if (type == CELL_WALL || type == CELL_TURRET) {
+                continue;
             }
+
+            Color terrainColor = terrainProps[type].color;
+
+            DrawRectangle(x * CELL_SIZE + 1, y * CELL_SIZE + 1,
+                         CELL_SIZE - 2, CELL_SIZE - 2,
+                         terrainColor);
         }
     }
 }

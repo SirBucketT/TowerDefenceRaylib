@@ -13,6 +13,7 @@ int main(void) {
     SetTargetFPS(120);
 
     GenerateRandomTerrain();
+    DrawTerrain();
 
     while(!WindowShouldClose()) {
         BeginDrawing();
@@ -41,7 +42,7 @@ int main(void) {
             findPathBFS(0, 0, COLS - 1, ROWS - 1, previewPath, &previewPathLength);
         }
 
-        DrawTerrain();
+
 
         switch (gameState) {
             case 0:

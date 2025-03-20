@@ -67,12 +67,12 @@ void HandleWallPlacement() {
 }
 
 void CreateTurret() {
-        static bool initialized = false;
-        if (!initialized) {
-            InitTurrets();
-            InitProjectiles();
-            initialized = true;
-        }
+    static bool initialized = false;
+    if (!initialized) {
+        InitTurrets();
+        InitProjectiles();
+        initialized = true;
+    }
 
     if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
         Vector2 getLeMousePosition = GetMousePosition();
@@ -81,11 +81,26 @@ void CreateTurret() {
         cellY = getLeMousePosition.y / CELL_SIZE;
 
         if (cellX >= 0 && cellX < COLS && cellY >= 0 && cellY < ROWS) {
-            if (grid[cellY][cellX] == CELL_EMPTY) {
+            // Allow placing turrets on any non-wall cell
+            if (grid[cellY][cellX] != CELL_WALL && grid[cellY][cellX] != CELL_TURRET) {
                 grid[cellY][cellX] = CELL_TURRET;
+
+                // Initialize a new turret at this position
+                for (int i = 0; i < MAX_TURRETS; i++) {
+                    if (!turrets[i].active) {
+                        turrets[i].active = true;
+                        turrets[i].gridX = cellX;
+                        turrets[i].gridY = cellY;
+                        turrets[i].x = cellX * CELL_SIZE + CELL_SIZE / 2;
+                        turrets[i].y = cellY * CELL_SIZE + CELL_SIZE / 2;
+                        activeTurrets++;
+                        break;
+                    }
+                }
             }
         }
     }
+
     if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON)) {
         Vector2 getLeMousePosition = GetMousePosition();
         cellX = getLeMousePosition.x / CELL_SIZE;
@@ -93,7 +108,17 @@ void CreateTurret() {
 
         if (cellX >= 0 && cellX < COLS && cellY >= 0 && cellY < ROWS) {
             if (grid[cellY][cellX] == CELL_TURRET) {
-                grid[cellY][cellX] = CELL_EMPTY;
+                // When removing a turret, change the cell back to CELL_EMPTY or another appropriate terrain
+                grid[cellY][cellX] = CELL_GRASS; // Or CELL_EMPTY if you prefer
+
+                // Deactivate any turret at this position
+                for (int i = 0; i < MAX_TURRETS; i++) {
+                    if (turrets[i].active && turrets[i].gridX == cellX && turrets[i].gridY == cellY) {
+                        turrets[i].active = false;
+                        activeTurrets--;
+                        break;
+                    }
+                }
             }
         }
     }
