@@ -22,21 +22,21 @@ typedef struct {
     int gridY;
     float x;
     float y;
-    float range;         // Radius in pixels for turret attack range
-    float damage;        // Damage dealt per shot
-    float fireRate;      // Shots per second
-    float fireTimer;     // Timer to track when turret can fire again
-    bool active;         // Is this turret active?
-    int targetEnemyIndex; // Index of the enemy this turret is targeting
+    float range;
+    float damage;
+    float fireRate;
+    float fireTimer;
+    bool active;
+    int targetEnemyIndex;
 } Turret;
 
 typedef struct {
-    float x, y;          // Current position
-    float targetX, targetY; // Target position (not needed for straight shots)
-    float speed;         // Speed of projectile
-    float damage;        // Damage to inflict on hit
-    bool active;         // Is projectile active?
-    int targetEnemyIndex; // Enemy that this projectile is targeting
+    float x, y;
+    float targetX, targetY;
+    float speed;
+    float damage;
+    bool active;
+    int targetEnemyIndex;
 } Projectile;
 
 typedef enum {
@@ -56,11 +56,14 @@ typedef struct {
     int gridX;
     int gridY;
     float speed;
+    float baseSpeed;
     int health;
     bool active;
     Vector2 path[ROWS*COLS];
     int pathLength;
     int currentPathIndex;
+    bool isWet;
+    float wetTimer;
 } Enemy;
 
 typedef struct Node {
