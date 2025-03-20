@@ -35,9 +35,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a4a0654b-603e-45bb-b3fd-75e31aab1059" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drawGame.c" beforeDir="false" afterPath="$PROJECT_DIR$/drawGame.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/terrainManager.c" beforeDir="false" afterPath="$PROJECT_DIR$/terrainManager.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/turretManager.c" beforeDir="false" afterPath="$PROJECT_DIR$/turretManager.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +133,7 @@
       <workItem from="1742287232647" duration="1000" />
       <workItem from="1742290963356" duration="6469000" />
       <workItem from="1742385054715" duration="3665000" />
-      <workItem from="1742470970662" duration="11644000" />
+      <workItem from="1742470970662" duration="11731000" />
     </task>
     <servers />
   </component>

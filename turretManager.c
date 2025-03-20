@@ -173,22 +173,31 @@ void DrawProjectiles(void) {
 void DrawTurrets(void) {
     for (int i = 0; i < MAX_TURRETS; i++) {
         if (turrets[i].active) {
-            DrawRectangle(turrets[i].gridX * CELL_SIZE + 1, turrets[i].gridY * CELL_SIZE + 1,
-                          CELL_SIZE - 2, CELL_SIZE - 2, RED);
 
-            if (turrets[i].targetEnemyIndex >= 0 && enemies[turrets[i].targetEnemyIndex].active) {
+            DrawRectangle(turrets[i].gridX * CELL_SIZE + 1, turrets[i].gridY * CELL_SIZE + 1,
+                         CELL_SIZE - 2, CELL_SIZE - 2, RED);
+
+            DrawRectangle(turrets[i].gridX * CELL_SIZE + CELL_SIZE/4,
+                         turrets[i].gridY * CELL_SIZE + CELL_SIZE/4,
+                         CELL_SIZE/2, CELL_SIZE/2, WHITE);
+
+            if (turrets[i].targetEnemyIndex >= 0 &&
+                turrets[i].targetEnemyIndex < MAX_ENEMIES &&
+                enemies[turrets[i].targetEnemyIndex].active) {
+
                 float targetX = enemies[turrets[i].targetEnemyIndex].x;
                 float targetY = enemies[turrets[i].targetEnemyIndex].y;
 
                 DrawLineEx((Vector2){turrets[i].x, turrets[i].y},
                           (Vector2){turrets[i].x + (targetX - turrets[i].x) * 0.5f,
-                                    turrets[i].y + (targetY - turrets[i].y) * 0.5f},
-                          3.0f, WHITE);
-            }
+                                   turrets[i].y + (targetY - turrets[i].y) * 0.5f},
+                          3.0f, YELLOW);
+                }
 
         }
     }
 }
+
 void InitProjectiles(void) {
     for (int i = 0; i < MAX_PROJECTILES; i++) {
         projectiles[i].active = false;
