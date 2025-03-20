@@ -125,6 +125,7 @@ void initPathfindingGrid() {
             pathNodes[y][x].y = y;
             pathNodes[y][x].visited = false;
             pathNodes[y][x].parent = NULL;
+
             pathNodes[y][x].obstacle = (grid[y][x] == CELL_WALL || grid[y][x] == CELL_TURRET);
         }
     }

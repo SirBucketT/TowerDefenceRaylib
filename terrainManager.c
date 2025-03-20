@@ -9,7 +9,7 @@ TerrainProperties terrainProps[6] = {
     {1.0f, RED, false, 0.0f},
     {0.5f, SKYBLUE, true, 3.0f},
     {0.8f, BROWN, false, 0.0f},
-    {1.0f, GREEN, false, 0.0f}
+    {1.0f, GREEN, false, 0.0f}         
 };
 
 void GenerateRandomTerrain(void) {
@@ -68,7 +68,6 @@ void DrawTerrain(void) {
     }
 }
 
-// Apply terrain effects to an enemy
 void ApplyTerrainEffects(Enemy* enemy, float deltaTime) {
     int cellX = enemy->gridX;
     int cellY = enemy->gridY;
@@ -83,11 +82,9 @@ void ApplyTerrainEffects(Enemy* enemy, float deltaTime) {
             enemy->wetTimer = terrainProps[terrainType].wetDuration;
         }
 
-        // Additional slowdown if the enemy is wet and on dirt
         if (enemy->isWet && terrainType == CELL_DIRT) {
             speedMultiplier = 0.6f;
         }
-
         enemy->speed = enemy->baseSpeed * speedMultiplier;
     }
 
@@ -96,7 +93,6 @@ void ApplyTerrainEffects(Enemy* enemy, float deltaTime) {
 
         if (enemy->wetTimer <= 0.0f) {
             enemy->isWet = false;
-
             if (grid[enemy->gridY][enemy->gridX] == CELL_EMPTY ||
                 grid[enemy->gridY][enemy->gridX] == CELL_GRASS) {
                 enemy->speed = enemy->baseSpeed;
