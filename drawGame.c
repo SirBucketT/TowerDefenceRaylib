@@ -66,10 +66,6 @@ void HandleWallPlacement() {
     }
 }
 
-void DrawTurret(void) {
-    DrawTurrets();
-}
-
 void CreateTurret() {
         static bool initialized = false;
         if (!initialized) {

@@ -48,7 +48,7 @@ int main(void) {
 
         GridDraw();
         DrawWalls();
-        DrawTurret();
+        DrawTurrets();
         DrawPreviewPath();
 
         if (gameState == 2) {

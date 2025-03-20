@@ -97,7 +97,6 @@ void DrawWalls(void);
 void HandleWallPlacement(void);
 void SpawnEnemies(void);
 void CreateTurret(void);
-void DrawTurret(void);
 bool isStackEmpty(Stack* stack);
 void initStack(Stack* stack);
 void pushStack(Stack* stack, Node* node);
