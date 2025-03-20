@@ -16,7 +16,6 @@ int main(void) {
     while(!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(BLACK);
-
         //=========================================================================================================================
         //     Game states:
         //     0: Wall placement phase
