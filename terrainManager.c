@@ -4,12 +4,12 @@
 #include <time.h>
 
 TerrainProperties terrainProps[6] = {
-    {1.0f, BLACK, false, 0.0f},        // CELL_EMPTY
-    {0.0f, GRAY, false, 0.0f},         // CELL_WALL (impassable)
-    {1.0f, RED, false, 0.0f},          // CELL_TURRET
-    {0.5f, SKYBLUE, true, 3.0f},       // CELL_WATER (slows to 50% speed, makes wet for 3 seconds)
-    {0.8f, BROWN, false, 0.0f},        // CELL_DIRT (slows to 80% speed, slows wet enemies more)
-    {1.0f, GREEN, false, 0.0f}         // CELL_GRASS (no effect)
+    {1.0f, BLACK, false, 0.0f},
+    {0.0f, GRAY, false, 0.0f},
+    {1.0f, RED, false, 0.0f},
+    {0.5f, SKYBLUE, true, 3.0f},
+    {0.8f, BROWN, false, 0.0f},
+    {1.0f, GREEN, false, 0.0f}
 };
 
 void GenerateRandomTerrain(void) {

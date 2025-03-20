@@ -267,8 +267,11 @@ void InitEnemies(void) {
         enemies[i].active = false;
         enemies[i].health = 100;
         enemies[i].speed = 100.0f;
+        enemies[i].baseSpeed = 100.0f;
         enemies[i].pathLength = 0;
         enemies[i].currentPathIndex = 0;
+        enemies[i].isWet = false;
+        enemies[i].wetTimer = 0.0f;      
     }
 
     activeEnemies = 0;
