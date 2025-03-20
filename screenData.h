@@ -76,6 +76,8 @@ typedef struct Node {
     bool visited;
     bool obstacle;
     struct Node* parent;
+    float cost;
+    float totalCost;     
 } Node;
 
 typedef struct {
