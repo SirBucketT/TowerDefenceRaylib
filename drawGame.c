@@ -271,7 +271,7 @@ void InitEnemies(void) {
         enemies[i].pathLength = 0;
         enemies[i].currentPathIndex = 0;
         enemies[i].isWet = false;
-        enemies[i].wetTimer = 0.0f;      
+        enemies[i].wetTimer = 0.0f;
     }
 
     activeEnemies = 0;
@@ -311,15 +311,33 @@ void SpawnEnemy(void) {
 void DrawEnemies(void) {
     for (int i = 0; i < MAX_ENEMIES; i++) {
         if (enemies[i].active) {
-            DrawCircle(enemies[i].x, enemies[i].y, CELL_SIZE/3, BLUE);
+            // Normal enemy color
+            Color enemyColor = BLUE;
 
+            // Change color if wet
+            if (enemies[i].isWet) {
+                enemyColor = DARKBLUE;
+
+                // Draw wet effect (droplets)
+                for (int d = 0; d < 3; d++) {
+                    float offsetX = (rand() % 20) - 10;
+                    float offsetY = (rand() % 20) - 10;
+                    DrawCircle(enemies[i].x + offsetX, enemies[i].y + offsetY, 2, SKYBLUE);
+                }
+            }
+
+            DrawCircle(enemies[i].x, enemies[i].y, CELL_SIZE/3, enemyColor);
+
+            // Health bar
             float healthBarWidth = CELL_SIZE * 0.8f;
             float healthBarHeight = 5.0f;
             float healthPercentage = (float)enemies[i].health / 100.0f;
 
-            DrawRectangle(enemies[i].x - healthBarWidth/2, enemies[i].y - CELL_SIZE/2 - 10, healthBarWidth, healthBarHeight, RED);
+            DrawRectangle(enemies[i].x - healthBarWidth/2, enemies[i].y - CELL_SIZE/2 - 10,
+                         healthBarWidth, healthBarHeight, RED);
 
-            DrawRectangle(enemies[i].x - healthBarWidth/2, enemies[i].y - CELL_SIZE/2 - 10, healthBarWidth * healthPercentage, healthBarHeight, GREEN);
+            DrawRectangle(enemies[i].x - healthBarWidth/2, enemies[i].y - CELL_SIZE/2 - 10,
+                         healthBarWidth * healthPercentage, healthBarHeight, GREEN);
         }
     }
 
