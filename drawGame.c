@@ -64,17 +64,18 @@ void HandleWallPlacement() {
     }
 }
 
-void DrawTurret() {
-    for (int y = 0; y < ROWS; y++) {
-        for (int x = 0; x < COLS; x++) {
-            if (grid[y][x] == CELL_TURRET) {
-                DrawRectangle(x * CELL_SIZE + 1, y * CELL_SIZE + 1, CELL_SIZE - 2, CELL_SIZE - 2, RED);
-            }
-        }
-    }
+void DrawTurret(void) {
+    DrawTurrets();
 }
 
 void CreateTurret() {
+        static bool initialized = false;
+        if (!initialized) {
+            InitTurrets();
+            InitProjectiles();
+            initialized = true;
+        }
+
     if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
         Vector2 getLeMousePosition = GetMousePosition();
 
