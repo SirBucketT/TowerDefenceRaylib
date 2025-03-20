@@ -17,6 +17,22 @@
 #define MAX_TURRETS 50
 #define MAX_PROJECTILES 100
 
+typedef enum {
+    CELL_EMPTY = 0,
+    CELL_WALL,
+    CELL_TURRET,
+    CELL_WATER,
+    CELL_DIRT,
+    CELL_GRASS
+} CellType;
+
+typedef struct {
+    float speedMultiplier;
+    Color color;
+    bool causesWetEffect;
+    float wetDuration;
+} TerrainProperties;
+
 typedef struct {
     int gridX;
     int gridY;
@@ -38,17 +54,6 @@ typedef struct {
     bool active;
     int targetEnemyIndex;
 } Projectile;
-
-typedef enum {
-    CELL_EMPTY = 0,
-    CELL_WALL,
-    CELL_TURRET,
-    CELL_WATER,
-    CELL_DIRT,
-    CELL_GRASS
-} CellType;
-
-struct Node;
 
 typedef struct {
     float x;
@@ -94,6 +99,7 @@ extern Enemy enemies[MAX_ENEMIES];
 extern int activeEnemies;
 extern float spawnTimer;
 extern float spawnInterval;
+extern TerrainProperties terrainProps[6];
 
 void DrawPreviewPath(void);
 
@@ -117,6 +123,11 @@ void enqueue(Queue* q, Node* node);
 Node* dequeue(Queue* q);
 bool findPathBFS(int startX, int startY, int goalX, int goalY, Vector2 path[], int* pathLength);
 void FindPath(Enemy* enemy, int startX, int startY, int goalX, int goalY);
+
+// Terrain-related functions
+void GenerateRandomTerrain(void);
+void DrawTerrain(void);
+void ApplyTerrainEffects(Enemy* enemy, float deltaTime);
 
 extern Turret turrets[MAX_TURRETS];
 extern int activeTurrets;

@@ -224,6 +224,8 @@ void UpdateEnemies(void) {
 
     for (int i = 0; i < MAX_ENEMIES; i++) {
         if (enemies[i].active) {
+            ApplyTerrainEffects(&enemies[i], deltaTime);
+
             if (enemies[i].currentPathIndex < enemies[i].pathLength) {
                 Vector2 targetPos = enemies[i].path[enemies[i].currentPathIndex];
 
