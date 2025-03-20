@@ -3,7 +3,6 @@
 #include "raylib.h"
 #include "screenData.h"
 #include "drawGame.c"
-#include "turretManager.c"
 
 int gameState = 0;
 

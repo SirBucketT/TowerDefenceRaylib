@@ -2,6 +2,7 @@
 #include "Raylib.h"
 #include <math.h>
 
+
 Turret turrets[MAX_TURRETS];
 int activeTurrets = 0;
 Projectile projectiles[MAX_PROJECTILES];
@@ -10,7 +11,7 @@ int activeProjectiles = 0;
 void InitTurrets(void) {
     for (int i = 0; i < MAX_TURRETS; i++) {
         turrets[i].active = false;
-        turrets[i].range = 150.0f;      
+        turrets[i].range = 150.0f;
         turrets[i].damage = 25.0f;
         turrets[i].fireRate = 1.0f;
         turrets[i].fireTimer = 0.0f;

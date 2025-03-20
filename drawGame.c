@@ -2,6 +2,8 @@
 #include "raylib.h"
 #include <math.h>
 
+#include "turretManager.c"
+
 CellType grid[ROWS][COLS] = {0};
 int cellX;
 int cellY;
