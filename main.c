@@ -59,12 +59,13 @@ void DrawMainMenu(void) {
 
 int main(void) {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Raylib tower defence thing");
-    SetTargetFPS(120);
+    //SetTargetFPS(120);
 
     while(!WindowShouldClose()) {
+        float deltaTime = GetFrameTime();
+        int fps = GetFPS();
         BeginDrawing();
         ClearBackground(BLACK);
-
         if (gameState >= 0 && IsKeyPressed(KEY_SPACE)) {
             if (gameState == 0) {
                 gameState++;
@@ -118,7 +119,7 @@ int main(void) {
                 DrawMainMenu();
             break;
         }
-
+        printf("Frame Time: %f ms | FPS: %d\n", deltaTime * 1000, fps);
         EndDrawing();
     }
 
