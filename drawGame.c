@@ -33,7 +33,7 @@ bool isStackEmpty(Stack* stack) {
 
 
 void DrawWalls() {
-    FILE *TestDrawGrid = fopen("TestGrid.txt", "w");
+    FILE *TestDrawWall = fopen("TestDrawWalls.txt", "w");
     float deltaTime = GetFrameTime();
     int fps = GetFPS();
     for (int y = 0; y < ROWS; y++) {
@@ -43,8 +43,8 @@ void DrawWalls() {
             }
         }
     }
-    fprintf(TestDrawGrid, "Frame Time GridDraw Function: %f ms | FPS: %d\n", deltaTime * 1000, fps);
-    fclose(TestDrawGrid);
+    fprintf(TestDrawWall, "Frame Time GridWalls Function: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+    fclose(TestDrawWall);
 }
 
 void HandleWallPlacement() {
