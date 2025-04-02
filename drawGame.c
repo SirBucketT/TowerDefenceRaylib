@@ -128,25 +128,6 @@ void CreateTurret() {
     }
 }
 
-void initStack(Stack* stack) {
-    stack->top = -1;
-}
-
-void pushStack(Stack* stack, Node* node) {
-    stack->top++;
-    stack->nodes[stack->top] = node;
-}
-
-Node* popStack(Stack* stack) {
-    if (isStackEmpty(stack)) {
-        return NULL;
-    }
-
-    Node* node = stack->nodes[stack->top];
-    stack->top--;
-    return node;
-}
-
 void initPathfindingGrid() {
     for (int y = 0; y < ROWS; y++) {
         for (int x = 0; x < COLS; x++) {
