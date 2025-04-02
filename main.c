@@ -19,7 +19,7 @@ Rectangle playButton = { 0 };
 Rectangle quitButton = { 0 };
 
 //Performance stuff
-//FILE *MainTest = fopen("PerformanceTester.txt", "w");
+//FILE *MainTest = fopen("name.txt", "w");
 //float deltaTime = GetFrameTime();
 //int fps = GetFPS();
 //fprintf(MainTest, "Frame Time Main Function: %f ms | FPS: %d\n", deltaTime * 1000, fps);

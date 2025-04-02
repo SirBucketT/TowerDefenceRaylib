@@ -24,16 +24,18 @@ bool isStackEmpty(Stack* stack) {
     return stack->top == -1;
 }
 
-void GridDraw() {
-    for (int i = 0; i <= COLS; i++) {
-        DrawLine(i * CELL_SIZE, 0, i * CELL_SIZE, SCREEN_HEIGHT, WHITE);
-    }
-    for (int i = 0; i <= ROWS; i++) {
-        DrawLine(0, i * CELL_SIZE, SCREEN_WIDTH, i * CELL_SIZE, WHITE);
-    }
-}
+//Performance stuff
+//FILE *MainTest = fopen("name.txt", "w");
+//float deltaTime = GetFrameTime();
+//int fps = GetFPS();
+//fprintf(MainTest, "Frame Time Main Function: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+//fclose(MainTest);
+
 
 void DrawWalls() {
+    FILE *TestDrawGrid = fopen("TestGrid.txt", "w");
+    float deltaTime = GetFrameTime();
+    int fps = GetFPS();
     for (int y = 0; y < ROWS; y++) {
         for (int x = 0; x < COLS; x++) {
             if (grid[y][x] == CELL_WALL) {
@@ -41,6 +43,8 @@ void DrawWalls() {
             }
         }
     }
+    fprintf(TestDrawGrid, "Frame Time GridDraw Function: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+    fclose(TestDrawGrid);
 }
 
 void HandleWallPlacement() {
