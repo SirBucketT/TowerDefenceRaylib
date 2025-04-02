@@ -18,8 +18,16 @@ int gameState = 3;
 Rectangle playButton = { 0 };
 Rectangle quitButton = { 0 };
 
+//Performance stuff
+//FILE *MainTest = fopen("PerformanceTester.txt", "w");
+//float deltaTime = GetFrameTime();
+//int fps = GetFPS();
+//fprintf(MainTest, "Frame Time Main Function: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+
 void DrawMainMenu(void) {
 
+    float deltaTime = GetFrameTime();
+    int fps = GetFPS();
     DrawText("TOWER DEFENCE GAME OR SOMETHING", SCREEN_WIDTH/2 - 300, SCREEN_HEIGHT/4, 30, WHITE);
 
     playButton = (Rectangle){ SCREEN_WIDTH/2 - 100, SCREEN_HEIGHT/2, 200, 50 };
@@ -55,9 +63,11 @@ void DrawMainMenu(void) {
             CloseWindow();
         }
     }
+    printf("Frame Time for menu: %f ms | FPS: %d\n", deltaTime * 1000, fps);
 }
 
 int main(void) {
+    FILE *MainTest = fopen("PerformanceTester.txt", "w");
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Raylib tower defence thing");
     //SetTargetFPS(120);
 
@@ -119,10 +129,10 @@ int main(void) {
                 DrawMainMenu();
             break;
         }
-        printf("Frame Time: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+        fprintf(MainTest, "Frame Time Main Function: %f ms | FPS: %d\n", deltaTime * 1000, fps);
         EndDrawing();
     }
-
+    fclose(MainTest);
     CloseWindow();
 
     return 0;
