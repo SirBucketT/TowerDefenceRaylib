@@ -48,6 +48,9 @@ void DrawWalls() {
 }
 
 void HandleWallPlacement() {
+    FILE *tester = fopen("TestHandleWallPlacement.txt", "w");
+    float deltaTime = GetFrameTime();
+    int fps = GetFPS();
     if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
         Vector2 getLeMousePosition = GetMousePosition();
 
@@ -68,6 +71,8 @@ void HandleWallPlacement() {
             grid[cellY][cellX] = CELL_EMPTY;
         }
     }
+    fprintf(tester, "Frame Time for HandleWallPlacement Function: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+    fclose(tester);
 }
 
 void CreateTurret() {
