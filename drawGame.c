@@ -76,6 +76,9 @@ void HandleWallPlacement() {
 }
 
 void CreateTurret() {
+    FILE *tester = fopen("TestCreateTurret.txt", "w");
+    float deltaTime = GetFrameTime();
+    int fps = GetFPS();
     static bool initialized = false;
     if (!initialized) {
         InitTurrets();
@@ -131,9 +134,14 @@ void CreateTurret() {
             }
         }
     }
+    fprintf(tester, "Frame Time for creating turrets: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+    fclose(tester);
 }
 
 void initPathfindingGrid() {
+    FILE *tester = fopen("TestInitPathFindingGrid.txt", "w");
+    float deltaTime = GetFrameTime();
+    int fps = GetFPS();
     for (int y = 0; y < ROWS; y++) {
         for (int x = 0; x < COLS; x++) {
             pathNodes[y][x].x = x;
@@ -144,6 +152,8 @@ void initPathfindingGrid() {
             pathNodes[y][x].obstacle = (grid[y][x] == CELL_WALL || grid[y][x] == CELL_TURRET);
         }
     }
+    fprintf(tester, "Frame Time for Initializing path finding grid: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+    fclose(tester);
 }
 
 bool findPathBFS(int startX, int startY, int goalX, int goalY, Vector2 path[], int* pathLength) {

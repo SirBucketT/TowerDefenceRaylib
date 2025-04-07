@@ -112,10 +112,10 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.hello_raylib_with_cmake" />
       <item itemvalue="CMake Application.TowerDefenceRaylib" />
-      <item itemvalue="CMake Application.raylib" />
       <item itemvalue="CMake Application.glfw" />
+      <item itemvalue="CMake Application.hello_raylib_with_cmake" />
+      <item itemvalue="CMake Application.raylib" />
       <item itemvalue="CMake Application.update_mappings" />
     </list>
   </component>
@@ -137,6 +137,8 @@
       <workItem from="1743511167179" duration="1480000" />
       <workItem from="1743591459952" duration="5611000" />
       <workItem from="1743672749181" duration="233000" />
+      <workItem from="1744025353744" duration="4000" />
+      <workItem from="1744025394216" duration="346000" />
     </task>
     <servers />
   </component>
