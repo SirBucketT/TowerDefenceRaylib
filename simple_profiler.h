@@ -3,8 +3,8 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h> // For qsort
-#include "raylib.h"  // For GetTime() and GetFrameTime()
+#include <stdlib.h>
+#include "raylib.h"
 
 #define MAX_PROFILE_SAMPLES 100
 #define MAX_FUNCTION_NAME_LENGTH 64
@@ -17,36 +17,29 @@ typedef struct {
     int calls;
 } ProfileSample;
 
-// Global array of profile samples
 ProfileSample gProfileSamples[MAX_PROFILE_SAMPLES];
 int gNumProfileSamples = 0;
 bool gProfilingEnabled = true;
 double gLastReportTime = 0;
-double gReportInterval = 5.0; // Report every 5 seconds
+double gReportInterval = 5.0;
 
-// Compare function for qsort
 int CompareProfileSamples(const void* a, const void* b) {
     const ProfileSample* sampleA = (const ProfileSample*)a;
     const ProfileSample* sampleB = (const ProfileSample*)b;
 
-    // Sort by total time, descending
     if (sampleB->totalTime > sampleA->totalTime) return 1;
     if (sampleB->totalTime < sampleA->totalTime) return -1;
     return 0;
 }
 
-// Report profiling results
 void ReportProfilingResults(void) {
     if (gNumProfileSamples == 0) return;
 
-    // Sort samples by total time
     qsort(gProfileSamples, gNumProfileSamples, sizeof(ProfileSample), CompareProfileSamples);
 
-    // Open profile report file
     FILE* file = fopen("profile_report.txt", "w");
     if (!file) return;
 
-    // Write header
     fprintf(file, "=== Profiling Report ===\n");
     fprintf(file, "Function                                  | Calls    | Total (ms) | Avg (ms)   | Min (ms)   | Max (ms)   |\n");
     fprintf(file, "------------------------------------------|----------|------------|------------|------------|------------|\n");
@@ -65,12 +58,10 @@ void ReportProfilingResults(void) {
             sample->maxTime * 1000.0);
     }
 
-    // Write footer
     fprintf(file, "=== End of Report ===\n");
 
     fclose(file);
 
-    // Reset for next interval
     for (int i = 0; i < gNumProfileSamples; i++) {
         gProfileSamples[i].totalTime = 0;
         gProfileSamples[i].minTime = 999999.0;
@@ -79,21 +70,17 @@ void ReportProfilingResults(void) {
     }
 }
 
-// Start profiling a function
 double StartProfiling(const char* functionName) {
     if (!gProfilingEnabled) return 0;
 
-    // Simply return the current time
     return GetTime();
 }
 
-// End profiling a function
 void EndProfiling(const char* functionName, double startTime) {
     if (!gProfilingEnabled) return;
 
     double elapsedTime = GetTime() - startTime;
 
-    // Find existing sample or create new one
     int sampleIndex = -1;
     for (int i = 0; i < gNumProfileSamples; i++) {
         if (strcmp(gProfileSamples[i].functionName, functionName) == 0) {
@@ -103,7 +90,6 @@ void EndProfiling(const char* functionName, double startTime) {
     }
 
     if (sampleIndex == -1) {
-        // Create new sample
         if (gNumProfileSamples < MAX_PROFILE_SAMPLES) {
             sampleIndex = gNumProfileSamples++;
             strncpy(gProfileSamples[sampleIndex].functionName, functionName, MAX_FUNCTION_NAME_LENGTH-1);
@@ -125,7 +111,6 @@ void EndProfiling(const char* functionName, double startTime) {
             gProfileSamples[sampleIndex].maxTime = elapsedTime;
     }
 
-    // Check if it's time to report
     double currentTime = GetTime();
     if (currentTime - gLastReportTime > gReportInterval) {
         ReportProfilingResults();
@@ -133,7 +118,6 @@ void EndProfiling(const char* functionName, double startTime) {
     }
 }
 
-// Define macros for easy usage
 #define PROFILE_START(name) double profilerStart_##name = StartProfiling(#name)
 #define PROFILE_END(name) EndProfiling(#name, profilerStart_##name)
 
