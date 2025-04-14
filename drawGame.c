@@ -240,7 +240,9 @@ bool findPathBFS(int startX, int startY, int goalX, int goalY, Vector2 path[], i
 }
 
 void UpdateEnemies(void) {
+    FILE *tester = fopen("TestUpdateEnemies.txt", "w");
     float deltaTime = GetFrameTime();
+    int fps = GetFPS();
 
     spawnTimer += deltaTime;
 
@@ -289,6 +291,8 @@ void UpdateEnemies(void) {
             }
         }
     }
+    fprintf(tester, "Frame Time for updating enemies: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+    fclose(tester);
 }
 
 
