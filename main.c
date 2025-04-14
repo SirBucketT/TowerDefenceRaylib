@@ -4,6 +4,7 @@
 #include "screenData.h"
 #include "drawGame.c"
 #include "terrainManager.c"
+#include "simple_profiler.h"
 
 //=========================================================================================================================
 //     Game states:
@@ -20,9 +21,8 @@ Rectangle quitButton = { 0 };
 
 void DrawMainMenu(void) {
 
-    FILE *MenuTest = fopen("TestMenu.txt", "w");
-    float deltaTime = GetFrameTime();
-    int fps = GetFPS();
+    PROFILE_START(DrawMainMenu);
+
     DrawText("TOWER DEFENCE GAME OR SOMETHING", SCREEN_WIDTH/2 - 300, SCREEN_HEIGHT/4, 30, WHITE);
 
     playButton = (Rectangle){ SCREEN_WIDTH/2 - 100, SCREEN_HEIGHT/2, 200, 50 };
@@ -58,12 +58,11 @@ void DrawMainMenu(void) {
             CloseWindow();
         }
     }
-    fprintf(MenuTest, "Frame Time Main Function: %f ms | FPS: %d\n", deltaTime * 1000, fps);
-    fclose(MenuTest);
-    //printf("Frame Time for menu: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+    PROFILE_END(DrawMainMenu);
 }
 
 int main(void) {
+    PROFILE_START(main);
     FILE *MainTest = fopen("TestMain.txt", "w");
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Raylib tower defence thing");
     //SetTargetFPS(120);
@@ -130,6 +129,8 @@ int main(void) {
         EndDrawing();
     }
     fclose(MainTest);
+    PROFILE_END(main);
     CloseWindow();
+    ReportProfilingResults();
     return 0;
 }

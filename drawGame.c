@@ -1,7 +1,7 @@
 #include "screenData.h"
 #include "raylib.h"
 #include <math.h>
-
+#include "simple_profiler.h"
 #include "turretManager.c"
 
 CellType grid[ROWS][COLS] = {0};
@@ -397,9 +397,7 @@ void DrawEnemies(void) {
 }
 
 void SpawnEnemies(void) {
-    FILE *tester = fopen("TestSpawnEnemies.txt", "w");
-    float deltaTime = GetFrameTime();
-    int fps = GetFPS();
+    PROFILE_START(SpawnEnemies);
     static bool initialized = false;
     if (!initialized) {
         InitEnemies();
@@ -408,31 +406,40 @@ void SpawnEnemies(void) {
 
     UpdateEnemies();
     DrawEnemies();
-    fprintf(tester, "Frame Time for SpawnEnemies: %f ms | FPS: %d\n", deltaTime * 1000, fps);
-    fclose(tester);
+    PROFILE_END(SpawnEnemies);
 }
 
 void initQueue(Queue* q) {
+    PROFILE_START(initQueue);
     q->front = 0;
     q->rear = 0;
+    PROFILE_END(initQueue);
 }
 
 bool isQueueEmpty(Queue* q) {
+    PROFILE_START(isQueueEmpty);
     return q->front == q->rear;
+    PROFILE_END(isQueueEmpty);
 }
 
 void enqueue(Queue* q, Node* node) {
+    PROFILE_START(enqueue);
     q->nodes[q->rear++] = node;
+    PROFILE_END(enqueue);
 }
 
 Node* dequeue(Queue* q) {
+    PROFILE_START(dequeue);
     return q->nodes[q->front++];
+    PROFILE_END(dequeue);
 }
 
 void DrawPreviewPath(void) {
+    PROFILE_START(DrawPreviewPath);
     for (int i = 0; i < previewPathLength - 1; i++) {
         Vector2 start = previewPath[i];
         Vector2 end = previewPath[i + 1];
         DrawLineEx(start, end, 4.0f, YELLOW);
     }
+    PROFILE_END(DrawPreviewPath);
 }

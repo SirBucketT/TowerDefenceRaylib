@@ -20,7 +20,6 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="TowerDefenceRaylib" targetName="hello_raylib_with_cmake" />
       <config projectName="TowerDefenceRaylib" targetName="glfw" />
       <config projectName="TowerDefenceRaylib" targetName="update_mappings" />
       <config projectName="TowerDefenceRaylib" targetName="raylib" />
@@ -34,6 +33,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4a0654b-603e-45bb-b3fd-75e31aab1059" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/simple_profiler.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/drawGame.c" beforeDir="false" afterPath="$PROJECT_DIR$/drawGame.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
@@ -63,42 +63,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;CMake Application.glfw.executor&quot;: &quot;Run&quot;,
-    &quot;CMake Application.hello_raylib_with_cmake.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "CMake Application.TowerDefenceRaylib.executor": "Run",
+    "CMake Application.glfw.executor": "Run",
+    "CMake Application.hello_raylib_with_cmake.executor": "Run",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.west.config.association.type.startup.service": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="CMake Application.hello_raylib_with_cmake">
+}]]></component>
+  <component name="RunManager" selected="CMake Application.TowerDefenceRaylib">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TowerDefenceRaylib" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TowerDefenceRaylib" TARGET_NAME="TowerDefenceRaylib" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TowerDefenceRaylib" RUN_TARGET_NAME="TowerDefenceRaylib">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="glfw" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TowerDefenceRaylib" TARGET_NAME="glfw" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="hello_raylib_with_cmake" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TowerDefenceRaylib" TARGET_NAME="hello_raylib_with_cmake" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TowerDefenceRaylib" RUN_TARGET_NAME="hello_raylib_with_cmake">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -116,7 +117,6 @@
     <list>
       <item itemvalue="CMake Application.TowerDefenceRaylib" />
       <item itemvalue="CMake Application.glfw" />
-      <item itemvalue="CMake Application.hello_raylib_with_cmake" />
       <item itemvalue="CMake Application.raylib" />
       <item itemvalue="CMake Application.update_mappings" />
     </list>
@@ -143,7 +143,7 @@
       <workItem from="1744025394216" duration="3663000" />
       <workItem from="1744184794734" duration="1000" />
       <workItem from="1744281205992" duration="2021000" />
-      <workItem from="1744625194890" duration="8456000" />
+      <workItem from="1744625194890" duration="9571000" />
     </task>
     <servers />
   </component>
