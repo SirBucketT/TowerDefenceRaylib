@@ -297,6 +297,9 @@ void UpdateEnemies(void) {
 
 
 void InitEnemies(void) {
+    FILE *tester = fopen("TestInitEnemies.txt", "w");
+    float deltaTime = GetFrameTime();
+    int fps = GetFPS();
     for (int i = 0; i < MAX_ENEMIES; i++) {
         enemies[i].active = false;
         enemies[i].health = 100;
@@ -310,11 +313,18 @@ void InitEnemies(void) {
 
     activeEnemies = 0;
     spawnTimer = 0.0f;
+    fprintf(tester, "Frame Time for Init Enemies: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+    fclose(tester);
 }
 
 
 void FindPath(Enemy* enemy, int startX, int startY, int goalX, int goalY) {
+    FILE *tester = fopen("TestFindPath.txt", "w");
+    float deltaTime = GetFrameTime();
+    int fps = GetFPS();
     findPathBFS(startX, startY, goalX, goalY, enemy->path, &enemy->pathLength);
+    fprintf(tester, "Frame Time for Path finding and BFS algorithm: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+    fclose(tester);
 }
 
 void SpawnEnemy(void) {
