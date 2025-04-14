@@ -156,26 +156,6 @@ void initPathfindingGrid() {
     fclose(tester);
 }
 
-FILE* perfLog = NULL;
-
-void initLogging() {
-    perfLog = fopen("findPathBFS.log", "w");
-
-}
-
-bool loggedFindPathBFS(int startX, int startY, int goalX, int goalY, Vector2 path[], int* pathLength) {
-    double startTime = GetTime();
-    bool result = findPathBFS(startX, startY, goalX, goalY, path, pathLength);
-    double endTime = GetTime();
-
-    if (perfLog) {
-        fprintf(perfLog, "findPathBFS took %f seconds\n", endTime - startTime);
-        fflush(perfLog);
-    }
-
-    return result;
-}
-
 bool findPathBFS(int startX, int startY, int goalX, int goalY, Vector2 path[], int* pathLength) {
     initPathfindingGrid();
 
@@ -257,13 +237,6 @@ bool findPathBFS(int startX, int startY, int goalX, int goalY, Vector2 path[], i
 
     *pathLength = 0;
     return false;
-}
-
-void closeLogging() {
-    if (perfLog) {
-        fclose(perfLog);
-        perfLog = NULL;
-    }
 }
 
 void UpdateEnemies(void) {
