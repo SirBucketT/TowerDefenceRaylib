@@ -328,6 +328,9 @@ void FindPath(Enemy* enemy, int startX, int startY, int goalX, int goalY) {
 }
 
 void SpawnEnemy(void) {
+    FILE *tester = fopen("TestSpawnEnemy.txt", "w");
+    float deltaTime = GetFrameTime();
+    int fps = GetFPS();
     if (activeEnemies >= MAX_ENEMIES) return;
 
     for (int i = 0; i < MAX_ENEMIES; i++) {
@@ -351,9 +354,14 @@ void SpawnEnemy(void) {
             break;
         }
     }
+    fprintf(tester, "Frame Time for enemy spawning: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+    fclose(tester);
 }
 
 void DrawEnemies(void) {
+    FILE *tester = fopen("TestDrawEnemies.txt", "w");
+    float deltaTime = GetFrameTime();
+    int fps = GetFPS();
     for (int i = 0; i < MAX_ENEMIES; i++) {
         if (enemies[i].active) {
             Color enemyColor = BLUE;
@@ -384,6 +392,8 @@ void DrawEnemies(void) {
 
     DrawText(TextFormat("Lives: %d", playerLives), 10, 10, 20, WHITE);
     DrawText(TextFormat("Score: %d", playerScore), 10, 40, 20, WHITE);
+    fprintf(tester, "Frame Time for Drawing enemies: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+    fclose(tester);
 }
 
 void SpawnEnemies(void) {
