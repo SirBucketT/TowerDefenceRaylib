@@ -397,6 +397,9 @@ void DrawEnemies(void) {
 }
 
 void SpawnEnemies(void) {
+    FILE *tester = fopen("TestSpawnEnemies.txt", "w");
+    float deltaTime = GetFrameTime();
+    int fps = GetFPS();
     static bool initialized = false;
     if (!initialized) {
         InitEnemies();
@@ -405,6 +408,8 @@ void SpawnEnemies(void) {
 
     UpdateEnemies();
     DrawEnemies();
+    fprintf(tester, "Frame Time for SpawnEnemies: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+    fclose(tester);
 }
 
 void initQueue(Queue* q) {

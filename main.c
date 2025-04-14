@@ -18,13 +18,6 @@ int gameState = 3;
 Rectangle playButton = { 0 };
 Rectangle quitButton = { 0 };
 
-//Performance stuff
-//FILE *MainTest = fopen("name.txt", "w");
-//float deltaTime = GetFrameTime();
-//int fps = GetFPS();
-//fprintf(MainTest, "Frame Time Main Function: %f ms | FPS: %d\n", deltaTime * 1000, fps);
-//fclose(MainTest);
-
 void DrawMainMenu(void) {
 
     FILE *MenuTest = fopen("TestMenu.txt", "w");
@@ -138,6 +131,5 @@ int main(void) {
     }
     fclose(MainTest);
     CloseWindow();
-
     return 0;
 }
