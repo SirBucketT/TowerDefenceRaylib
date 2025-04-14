@@ -7,6 +7,7 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
   </component>
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
@@ -138,7 +139,10 @@
       <workItem from="1743591459952" duration="5611000" />
       <workItem from="1743672749181" duration="233000" />
       <workItem from="1744025353744" duration="4000" />
-      <workItem from="1744025394216" duration="346000" />
+      <workItem from="1744025394216" duration="3663000" />
+      <workItem from="1744184794734" duration="1000" />
+      <workItem from="1744281205992" duration="2021000" />
+      <workItem from="1744625194890" duration="582000" />
     </task>
     <servers />
   </component>
