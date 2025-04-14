@@ -24,18 +24,9 @@ bool isStackEmpty(Stack* stack) {
     return stack->top == -1;
 }
 
-//Performance stuff
-//FILE *MainTest = fopen("name.txt", "w");
-//float deltaTime = GetFrameTime();
-//int fps = GetFPS();
-//fprintf(MainTest, "Frame Time Main Function: %f ms | FPS: %d\n", deltaTime * 1000, fps);
-//fclose(MainTest);
-
 
 void DrawWalls() {
-    FILE *TestDrawWall = fopen("TestDrawWalls.txt", "w");
-    float deltaTime = GetFrameTime();
-    int fps = GetFPS();
+    PROFILE_START(DrawWalls);
     for (int y = 0; y < ROWS; y++) {
         for (int x = 0; x < COLS; x++) {
             if (grid[y][x] == CELL_WALL) {
@@ -43,14 +34,11 @@ void DrawWalls() {
             }
         }
     }
-    fprintf(TestDrawWall, "Frame Time GridWalls Function: %f ms | FPS: %d\n", deltaTime * 1000, fps);
-    fclose(TestDrawWall);
+    PROFILE_END(DrawWalls);
 }
 
 void HandleWallPlacement() {
-    FILE *tester = fopen("TestHandleWallPlacement.txt", "w");
-    float deltaTime = GetFrameTime();
-    int fps = GetFPS();
+    PROFILE_START(HandleWallPlacement);
     if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
         Vector2 getLeMousePosition = GetMousePosition();
 
@@ -71,14 +59,11 @@ void HandleWallPlacement() {
             grid[cellY][cellX] = CELL_EMPTY;
         }
     }
-    fprintf(tester, "Frame Time for HandleWallPlacement Function: %f ms | FPS: %d\n", deltaTime * 1000, fps);
-    fclose(tester);
+    PROFILE_END(HandleWallPlacement);
 }
 
 void CreateTurret() {
-    FILE *tester = fopen("TestCreateTurret.txt", "w");
-    float deltaTime = GetFrameTime();
-    int fps = GetFPS();
+    PROFILE_START(CreateTurret);
     static bool initialized = false;
     if (!initialized) {
         InitTurrets();
@@ -134,14 +119,13 @@ void CreateTurret() {
             }
         }
     }
-    fprintf(tester, "Frame Time for creating turrets: %f ms | FPS: %d\n", deltaTime * 1000, fps);
-    fclose(tester);
+    PROFILE_END(CreateTurret);
 }
 
 void initPathfindingGrid() {
-    FILE *tester = fopen("TestInitPathFindingGrid.txt", "w");
-    float deltaTime = GetFrameTime();
-    int fps = GetFPS();
+
+    PROFILE_START(initPathfindingGrid);
+
     for (int y = 0; y < ROWS; y++) {
         for (int x = 0; x < COLS; x++) {
             pathNodes[y][x].x = x;
@@ -152,8 +136,7 @@ void initPathfindingGrid() {
             pathNodes[y][x].obstacle = (grid[y][x] == CELL_WALL || grid[y][x] == CELL_TURRET);
         }
     }
-    fprintf(tester, "Frame Time for Initializing path finding grid: %f ms | FPS: %d\n", deltaTime * 1000, fps);
-    fclose(tester);
+    PROFILE_END(initPathfindingGrid);
 }
 
 bool findPathBFS(int startX, int startY, int goalX, int goalY, Vector2 path[], int* pathLength) {
@@ -240,9 +223,10 @@ bool findPathBFS(int startX, int startY, int goalX, int goalY, Vector2 path[], i
 }
 
 void UpdateEnemies(void) {
-    FILE *tester = fopen("TestUpdateEnemies.txt", "w");
+
+    PROFILE_START(UpdateEnemies);
+
     float deltaTime = GetFrameTime();
-    int fps = GetFPS();
 
     spawnTimer += deltaTime;
 
@@ -291,15 +275,12 @@ void UpdateEnemies(void) {
             }
         }
     }
-    fprintf(tester, "Frame Time for updating enemies: %f ms | FPS: %d\n", deltaTime * 1000, fps);
-    fclose(tester);
+    PROFILE_END(UpdateEnemies);
 }
 
 
 void InitEnemies(void) {
-    FILE *tester = fopen("TestInitEnemies.txt", "w");
-    float deltaTime = GetFrameTime();
-    int fps = GetFPS();
+    PROFILE_START(InitEnemies);
     for (int i = 0; i < MAX_ENEMIES; i++) {
         enemies[i].active = false;
         enemies[i].health = 100;
@@ -313,24 +294,22 @@ void InitEnemies(void) {
 
     activeEnemies = 0;
     spawnTimer = 0.0f;
-    fprintf(tester, "Frame Time for Init Enemies: %f ms | FPS: %d\n", deltaTime * 1000, fps);
-    fclose(tester);
+    PROFILE_END(InitEnemies);
 }
 
 
 void FindPath(Enemy* enemy, int startX, int startY, int goalX, int goalY) {
-    FILE *tester = fopen("TestFindPath.txt", "w");
-    float deltaTime = GetFrameTime();
-    int fps = GetFPS();
+    PROFILE_START(FindPath);
+
     findPathBFS(startX, startY, goalX, goalY, enemy->path, &enemy->pathLength);
-    fprintf(tester, "Frame Time for Path finding and BFS algorithm: %f ms | FPS: %d\n", deltaTime * 1000, fps);
-    fclose(tester);
+
+    PROFILE_END(FindPath);
 }
 
 void SpawnEnemy(void) {
-    FILE *tester = fopen("TestSpawnEnemy.txt", "w");
-    float deltaTime = GetFrameTime();
-    int fps = GetFPS();
+
+    PROFILE_START(SpawnEnemy);
+
     if (activeEnemies >= MAX_ENEMIES) return;
 
     for (int i = 0; i < MAX_ENEMIES; i++) {
@@ -354,14 +333,11 @@ void SpawnEnemy(void) {
             break;
         }
     }
-    fprintf(tester, "Frame Time for enemy spawning: %f ms | FPS: %d\n", deltaTime * 1000, fps);
-    fclose(tester);
+    PROFILE_END(SpawnEnemy);
 }
 
 void DrawEnemies(void) {
-    FILE *tester = fopen("TestDrawEnemies.txt", "w");
-    float deltaTime = GetFrameTime();
-    int fps = GetFPS();
+    PROFILE_START(DrawEnemies);
     for (int i = 0; i < MAX_ENEMIES; i++) {
         if (enemies[i].active) {
             Color enemyColor = BLUE;
@@ -392,8 +368,7 @@ void DrawEnemies(void) {
 
     DrawText(TextFormat("Lives: %d", playerLives), 10, 10, 20, WHITE);
     DrawText(TextFormat("Score: %d", playerScore), 10, 40, 20, WHITE);
-    fprintf(tester, "Frame Time for Drawing enemies: %f ms | FPS: %d\n", deltaTime * 1000, fps);
-    fclose(tester);
+    PROFILE_END(DrawEnemies);
 }
 
 void SpawnEnemies(void) {
