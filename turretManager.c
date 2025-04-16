@@ -1,5 +1,6 @@
 #include "screenData.h"
 #include "Raylib.h"
+#include "simple_profiler.h"
 #include <math.h>
 
 
@@ -9,6 +10,7 @@ Projectile projectiles[MAX_PROJECTILES];
 int activeProjectiles = 0;
 
 void InitTurrets(void) {
+    PROFILE_START(InitTurrets);
     for (int i = 0; i < MAX_TURRETS; i++) {
         turrets[i].active = false;
         turrets[i].range = 150.0f;
@@ -36,9 +38,11 @@ void InitTurrets(void) {
             }
         }
     }
+    PROFILE_END(InitTurrets);
 }
 
 void UpdateTurrets(void) {
+    PROFILE_START(UpdateTurrets);
     float deltaTime = GetFrameTime();
 
     for (int i = 0; i < MAX_TURRETS; i++) {
@@ -95,9 +99,12 @@ void UpdateTurrets(void) {
             }
         }
     }
+    PROFILE_END(UpdateTurrets);
 }
 
 void FireProjectile(int turretIndex, int enemyIndex) {
+
+    PROFILE_START(FireProjectile);
 
     for (int i = 0; i < MAX_PROJECTILES; i++) {
         if (!projectiles[i].active) {
@@ -111,9 +118,12 @@ void FireProjectile(int turretIndex, int enemyIndex) {
             return;
         }
     }
+    PROFILE_END(FireProjectile);
 }
 
 void UpdateProjectiles(void) {
+    PROFILE_START(UpdateProjectiles);
+
     float deltaTime = GetFrameTime();
 
     for (int i = 0; i < MAX_PROJECTILES; i++) {
@@ -160,17 +170,23 @@ void UpdateProjectiles(void) {
             activeProjectiles--;
         }
     }
+    PROFILE_END(UpdateProjectiles);
 }
 
 void DrawProjectiles(void) {
+    PROFILE_START(DrawProjectiles);
     for (int i = 0; i < MAX_PROJECTILES; i++) {
         if (projectiles[i].active) {
             DrawCircle(projectiles[i].x, projectiles[i].y, 5, YELLOW);
         }
     }
+    PROFILE_END(DrawProjectiles);
 }
 
 void DrawTurrets(void) {
+
+    PROFILE_START(DrawTurrets);
+
     for (int i = 0; i < MAX_TURRETS; i++) {
         if (turrets[i].active) {
 
@@ -196,11 +212,14 @@ void DrawTurrets(void) {
 
         }
     }
+    PROFILE_END(DrawTurrets);
 }
 
 void InitProjectiles(void) {
+    PROFILE_START(InitProjectiles);
     for (int i = 0; i < MAX_PROJECTILES; i++) {
         projectiles[i].active = false;
     }
     activeProjectiles = 0;
+    PROFILE_END(InitProjectiles);
 }
