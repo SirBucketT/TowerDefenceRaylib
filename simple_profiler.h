@@ -40,23 +40,25 @@ void ReportProfilingResults(void) {
     FILE* file = fopen("profile_report.txt", "w");
     if (!file) return;
 
-    fprintf(file, "=== Profiling Report ===\n");
-    fprintf(file, "Function                                  | Calls    | Total (ms) | Avg (ms)   | Min (ms)   | Max (ms)   |\n");
-    fprintf(file, "------------------------------------------|----------|------------|------------|------------|------------|\n");
+    fprintf(file, "Function                                  | Calls    | Total (ms) | Avg (ms)   | Min (ms)   | Max (ms)   | FPS       |\n");
+    fprintf(file, "------------------------------------------|----------|------------|------------|------------|------------|-----------|\n");
 
     // Write data rows
     for (int i = 0; i < gNumProfileSamples; i++) {
         ProfileSample* sample = &gProfileSamples[i];
         double avgTime = sample->totalTime / sample->calls;
+        double fps = sample->totalTime > 0 ? sample->calls / sample->totalTime : 0;
 
-        fprintf(file, "%-42s | %-8d | %-10.2f | %-10.2f | %-10.2f | %-10.2f |\n",
+        fprintf(file, "%-42s | %-8d | %-10.2f | %-10.2f | %-10.2f | %-10.2f | %-9.2f |\n",
             sample->functionName,
             sample->calls,
             sample->totalTime * 1000.0,
             avgTime * 1000.0,
             sample->minTime * 1000.0,
-            sample->maxTime * 1000.0);
+            sample->maxTime * 1000.0,
+            fps);
     }
+
 
     fprintf(file, "=== End of Report ===\n");
 
