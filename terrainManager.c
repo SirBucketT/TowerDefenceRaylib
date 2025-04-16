@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include <stdlib.h>
 #include <time.h>
+#include "simple_profiler.h"
 
 TerrainProperties terrainProps[6] = {
     {1.0f, BLACK, false, 0.0f},
@@ -13,6 +14,7 @@ TerrainProperties terrainProps[6] = {
 };
 
 void GenerateRandomTerrain(void) {
+    PROFILE_START(GenerateRandomTerrain);
     srand(time(NULL));
 
     bool hasTurret[ROWS][COLS] = {false};
@@ -76,9 +78,11 @@ void GenerateRandomTerrain(void) {
             pathExists = findPathBFS(0, 0, COLS-1, ROWS-1, testPath, &pathLength);
         }
     }
+    PROFILE_END(GenerateRandomTerrain);
 }
 
 void DrawTerrain(void) {
+    PROFILE_START(DrawTerrain);
     for (int y = 0; y < ROWS; y++) {
         for (int x = 0; x < COLS; x++) {
             CellType type = grid[y][x];
@@ -94,9 +98,11 @@ void DrawTerrain(void) {
                          terrainColor);
         }
     }
+    PROFILE_END(DrawTerrain);
 }
 
 void ApplyTerrainEffects(Enemy* enemy, float deltaTime) {
+    PROFILE_START(ApplyTerrainEffects);
     int cellX = enemy->gridX;
     int cellY = enemy->gridY;
 
@@ -127,4 +133,5 @@ void ApplyTerrainEffects(Enemy* enemy, float deltaTime) {
             }
         }
     }
+    PROFILE_END(ApplyTerrainEffects);
 }
