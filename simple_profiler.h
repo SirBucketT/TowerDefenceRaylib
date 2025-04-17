@@ -43,7 +43,6 @@ void ReportProfilingResults(void) {
     fprintf(file, "Function                                  | Calls    | Total (ms) | Avg (ms)   | Min (ms)   | Max (ms)   | FPS       |\n");
     fprintf(file, "------------------------------------------|----------|------------|------------|------------|------------|-----------|\n");
 
-    // Write data rows
     for (int i = 0; i < gNumProfileSamples; i++) {
         ProfileSample* sample = &gProfileSamples[i];
         double avgTime = sample->totalTime / sample->calls;
