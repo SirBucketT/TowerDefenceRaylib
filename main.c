@@ -20,7 +20,9 @@ Rectangle playButton = { 0 };
 Rectangle quitButton = { 0 };
 
 void DrawMainMenu(void) {
-
+    FILE *MenuTest = fopen("TestMenu.txt", "w");
+    float deltaTime = GetFrameTime();
+    int fps = GetFPS();
     PROFILE_START(DrawMainMenu);
 
     DrawText("TOWER DEFENCE GAME OR SOMETHING", SCREEN_WIDTH/2 - 300, SCREEN_HEIGHT/4, 30, WHITE);
@@ -59,6 +61,8 @@ void DrawMainMenu(void) {
         }
     }
     PROFILE_END(DrawMainMenu);
+    fprintf(MenuTest, "Frame Time Main Function: %f ms | FPS: %d\n", deltaTime * 1000, fps);
+    fclose(MenuTest);
 }
 
 int main(void) {
